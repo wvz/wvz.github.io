@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Data Projects | VWZ</title>
+	<meta charset="UTF-8" />
+	<!--[if lt IE 9]>
+  	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<![endif]-->
+  	<meta name="description" content="Wanyi Zhang's Data Projects" />
+  	<meta name="keywords" content="Data Analytics, Data Scientist, Statistics, Personal Website, Creative, Design, Wanyi Zhang, Vivien Wanyi Zhang, Portfolio, Projects" />
+  	<meta name="author" content="Wanyi Zhang" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--external links-->
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Overpass+Mono|Cormorant+Garamond|Dosis|Raleway|Cormorant|Merriweather|Inconsolata|VT323" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!--internal CSS-->
+	<style>
+	h2,h4,footer,ul.nav {font-family: 'Cormorant Garamond', serif}
+	h1 {
+		font-family: 'Cormorant', serif;
+		font-size: 32px;
+	}
+	#number {
+		font-family: 'VT323', monospace;
+		font-size:88px;
+	}
+	p {
+		font-family: 'Calibri', sans-serif;
+		font-size: 13px;
+		color:grey;
+	}	
+	body, html {height: 100%}
+
+
+	li a:hover:not(.active) {
+      color:rgb(0,200,200);
+      background:none;
+  	}
+  	a.newtab {
+  		target:;
+  	}
+	footer {
+		color:grey;
+		position:bottom;
+	}
+
+	summary {
+		font-size:20px;
+	}
+	button.project {
+    	padding-left: 50px;
+    	margin-left: 5%;
+    	border:none;
+    	border-left: 6px solid rgb(255,200,200);
+    	background: none;
+    	outline: none;
+	}
+	.project h1 {
+	  cursor: pointer;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+	.project h1:after {
+	  content: '\00bb';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	}
+	.project:hover h1 {
+	  padding-right: 25px;
+	  color:salmon;
+	}
+	.project:hover h1:after {
+	  color:salmon;
+	  opacity: 1;
+	  right:0;
+	}
+	button.project:active:after{
+		color:salmon;
+	}
+
+	hr.short-line {
+		margin:auto; 
+		width:50%
+	}
+	aside {
+		font-size: 13px;
+	    max-width: 23%;
+	    color: grey;
+	    margin-left: 4%;
+	}
+	article {
+		width:250px;
+		margin-left: 4%;
+	}
+	img {
+		height:500px;
+	}
+	#wrap { width: 800px; height: 690px; padding: 0; float:left; }
+    #frame { width: 1200px; height: 690px; border: 1px solid grey; }
+    #frame {
+        -ms-zoom: 0.7;
+        -moz-transform: scale(0.7);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.7);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.7);
+        -webkit-transform-origin: 0 0;
+    }
+	.wrapper {
+    height: 550px;
+    width: 100%;
+    overflow-x:scroll;
+    overflow-y:hidden; 
+    margin-top: 3%;
+	}
+	.container{
+	    width:4500px;  
+	}
+
+	.item{
+	    margin-left:1%;
+	    float:left;
+	    min-width: 15em;
+	}
+
+	</style>
+
+	<!--button js-->
+	<script>function showDesc(input) {
+    		var x = document.getElementById(input);
+    		if (x.style.display === 'none') {
+        		x.style.display = 'block';
+    		} else {
+        		x.style.display = 'none';
+    		}
+		}
+	</script>
+</head>
+
+
+
+<body>
+<!--background music-->
+  <audio autoplay="autoplay" loop="loop">
+    <source src="../www/Morning Talk_Supersymmetry.mp3" type="audio/mpeg">
+  </audio>
+<!--logo topleft>
+  <div class="logo w3-display-topleft w3-padding-large w3-large">
+    <img src="../www/logo.jpg" style="width:50px" alt="VWZ logo" />
+  </div-->
+<!--navigation bar-->
+	<div>
+	  <ul class="w3-panel w3-display-topright w3-navbar nav" style="position:fixed; background-color:rgba(255,255,255,0.7)">
+	    <li class="w3-ripple"><a href="../index.html">Home</a></li>
+	    <li class="w3-ripple"><a style="color:salmon">Data Projects</a></li>
+	    <li class="w3-ripple"><a href="http://vsco.co/stomacake/">Photography</a></li>
+	    <li class="w3-ripple"><a href="about-moi.html">About Moi</a></li>
+	  </ul>
+	</div>
+<!--projects-->
+	<div class="w3-container w3-animate-opacity">
+
+		<!--01/10-->
+		<ol>
+		<li id="number">01/10</li> <time>Nov - Dec 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc1')">
+		<h1>MelodySoup: A Music Writing Web App Based on Chord Mining</h1></button>
+
+		<div class="wrapper" id="desc1" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Kanghui Jiang<br>Max Zhehao Liu<br>Yixin Sun<br>Cen Zeng</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Team Leader<br> 
+					<i class="fa fa-tag"></i> Music Analysis <br> 
+					<i class="fa fa-tag"></i> Sequence Analysis <br>
+					<i class="fa fa-tag"></i> Web App Development<br>
+					<i class="fa fa-tag"></i> Data Visualization<br> 
+					<i class="fa fa-tag"></i> R Shiny<br> 
+					<i class="fa fa-tag"></i> R</p>					
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a class="newtab" href="https://github.com/TZstatsADS/Fall2016-proj5-grp2/">GitHub</a><br>
+					<i class="fa fa-star"></i> <a href="https://wanyizhang.shinyapps.io/melodysoup/">MelodySoup App</a><br>
+					<i class="fa fa-file-text"></i> <a href="http://rpubs.com/wvz/melodysoup/">Presentation Slides</a>	
+					</p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This is the final project of Advanced Data Science, where we were finally allowed to play whatever we want! Ever since I played Ukulele, I've always had the idea in mind that music (especially songs) can always be represented by just a few chords repeated in a given order. And that's the base of this whole project. By consulting with Professor Tian Zheng and researching music theories and statistical methods, the whole project gradually became visible in my minds. I recruited another 4 talented teammates and managed to dilever the app.</p>
+					<p>Listen to the music piece built based on a chord sequence of our app recommendation.</p>	
+					<audio controls="controls"><source src="www/melodysoup/All_genres.mp3" type="audio/mpeg"></audio>		
+				</article>
+
+				<img src="www/melodysoup/app1.png" alt="App screenshot 1" class="item w3-animate-opacity" />
+				<img src="www/melodysoup/app2.png" alt="App screenshot 2" class="item w3-animate-opacity" />
+				<img src="www/melodysoup/sankey.png" alt="Sankey diagram for all songs using 4-grams" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="item w3-animate-opacity" src="www/melodysoup/AllChordDiagram.html" alt="Topic modeling interactive Visualization" marginwidth="0" ="0">Your browser does not support iframes.</iframe></div>
+			</div>
+			<p style="float:left"><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+
+		</div>
+
+
+
+		<br>
+
+
+
+
+		<li id="number">02/10</li><time>Nov - Dec 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc2')">
+			<h1>Stack Overflow Q&amp;A Analysis &amp; Tag Recommendation System</h1>
+		</button>
+
+		<div class="wrapper" id="desc2" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Duanhong Gao<br>Yi Jian<br>Jingwei Li<br>Aoyuan Liao<br>Hanqing Shi<br>Jia Wang<br>Yutong Yang</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Recommendation System<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Topic Modeling <br><i class="fa fa-tag"></i> Text Mining <br> <i class="fa fa-tag"></i> Python</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/wvz/ADA-Project">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="www/proj2/presentation.html">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="www/proj2/master.pdf">Final Report</a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This is the last final project of Advanced Data Science which we are allowed to do whatever we want. Self-designed whole project flow, directed team of 5 to build an R Shiny app MelodySoup to generate chord progressions, designed logo. Conducted sequence analysis in R on chords of 990 songs using n-gram and tf-idf, visualized chord sequences by interactive chord diagrams and Sankey diagrams. Verified genre classifiablility by comparing prediction accuracy of Naïve Bayes and baseline model (improved by 107%) Introduced MelodySoup using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>			
+				</article>
+				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
+				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="w3-animate-opacity" src="www/stackoverflow/LDA.html" alt="Topic modeling interactive Visualization">Your browser does not support iframes.</iframe></div>
+				<img src="www/stackoverflow/recommend.png" alt="Recommendation result table" class="item w3-animate-opacity" />
+
+
+			</div>
+			<p><a style="text-decoration:none; position:relative; left:0; bottom:0;">&mdash;&ndash;&mdash;&gt; scroll right </a></p>
+
+		</div>
+
+
+
+
+
+		<br>
+
+
+
+
+		<li id="number">03/10</li><time>November 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc3')">
+			<h1>Association Mining of Music and Lyrics</h1></button>
+
+		<div class="wrapper" id="desc3" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-user"></i> <b>Indivudual Project</b></p>
+					<br>
+					<p><i class="fa fa-tag"></i> Team Leader<br> <i class="fa fa-tag"></i> Web App Development<br><i class="fa fa-tag"></i> Music Analysis <br><i class="fa fa-tag"></i> R Shiny <br> <i class="fa fa-tag"></i> Data Visualization</p>					
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/TZstatsADS/Fall2016-proj5-grp2/">GitHub</a><br>
+					<i class="fa fa-link"></i> <a href="https://wanyizhang.shinyapps.io/melodysoup/">MelodySoup App</a><br>
+					<i class="fa fa-slideshare"></i> <a href="http://rpubs.com/wvz/melodysoup/">Presentation Slides</a>	
+					</p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This up using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>	
+					<audio controls="controls"><source src="www/proj1/All_genres.mp3" type="audio/mpeg"></audio>		
+				</article>
+
+				<img src="www/musiclyrics/app1.png" alt="App screenshot 1" class="item w3-animate-opacity" />
+				<img src="www/musiclyrics/app2.png" alt="App screenshot 2" class="item w3-animate-opacity" />
+				<img src="www/musiclyrics/chord.png" alt="Chord diagrams for all genres" class="item w3-animate-opacity" />
+				<img src="www/musiclyrics/sankey.png" alt="Sankey diagram for all songs using 4-grams" class="item w3-animate-opacity" />
+
+			</div>
+			<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+
+		</div>
+
+
+
+
+	</div>
+
+
+
+<!--copyright footer-->
+  <footer>Copyright &copy; Vivien Wanyi Zhang 2017 </footer>
+</body>

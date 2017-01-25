@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Vivien Wanyi Zhang | Data Music Arts </title>
+	<meta charset="UTF-8" />
+	<!--[if lt IE 9]>
+  	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<![endif]-->
+  	<meta name="description" content="Wanyi Zhang's Personal Website" />
+  	<meta name="keywords" content="Data Analytics, Data Scientist, Statistics, Personal Website, Photography, Creative, Design, Wanyi Zhang, Portfolio, Projects" />
+  	<meta name="author" content="Wanyi Zhang" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--external links-->
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Cormorant+Garamond|Dosis|Raleway|Montserrat+Subrayada|Titillium+Web" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!--internal CSS-->
+	<style>
+	body,h1,h4,ul,footer {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 100;
+}
+	body,p {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 100;
+}	
+	body, html {height: 100%}
+	footer {background: none;color:white;}
+	.bgimg {
+      background-image: url('www/clouds.jpg');
+      min-height: 100%;
+      background-position: center;
+      background-size: cover;
+	}
+  li a:hover:not(.active) {
+      color:rgb(255,200,200);
+      background:none;
+  }
+  p span.displaynone { display:none; }
+
+	</style>
+
+</head>
+
+
+
+<body>
+<!--background music-->
+<audio autoplay="autoplay" loop="loop">
+  <source src="www/Morning Talk_Supersymmetry.mp3" type="audio/mpeg">
+</audio>
+
+<!--Vivien Wanyi Zhang-->
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <!--div class="w3-display-topleft w3-padding-large w3-large">
+    VWZ
+  </div-->
+  <!--div class="w3-display-topleft w3-padding-jumbo w3-xlarge">
+    <h4><button onclick="document.getElementById('Data Projects').style.display='block'" class="w3-btn w3-hover-light-grey" style="margin:0 0 0.3em 0"> <a href="data-projects/data-projects.html" style="text-decoration:none">Data Projects</a></button></h4>
+    <h4><button onclick="document.getElementById('Photography').style.display='block'" class="w3-btn w3-hover-light-grey" style="margin:0.3em 0 0.3em 0"><a href="http://vsco.co/stomacake/" style="text-decoration:none">Photography</a></button></h4>
+    <h4><button onclick="document.getElementById('About Moi').style.display='block'" class="w3-btn w3-hover-light-grey" style="margin:0.3em 0 0.3em 0">About Moi</button></h4>
+  </div-->
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top">Vivien Wanyi Zhang</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <p class="w3-large w3-center">
+		 <b>&exist; selected creations &isin; VWZ</b><br> 
+     <em>w.zhang@<span class="displaynone">null</span>columbia.edu<br>
+		 New York, NY 10025, USA<br></em>
+	   <a href="https://www.instagram.com/stomacake_/"><i class="fa fa-instagram"></i></a>
+	   <a href="http://whatuhoh.tumblr.com/"><i class="fa fa-tumblr"></i></a> 
+	   <a href="https://soundcloud.com/bunnythegreat"><i class="fa fa-soundcloud"></i></a> 
+	   <a href="https://github.com/wvz"><i class="fa fa-github"></i></a>
+	   <a href="https://www.linkedin.com/in/zhangwanyi"><i class="fa fa-linkedin-square"></i></a>
+	   <a href="https://twitter.com/mushroomvv"><i class="fa fa-twitter"></i></a> 
+	   <a href="https://www.pinterest.com/stomacake/"><i class="fa fa-pinterest"></i></a><br>
+	  </p>
+  </div>
+  <!--navigation bar-->
+  <ul class="w3-panel w3-display-topright w3-navbar" style="position:fixed;">
+    <li class="w3-ripple"><a>Home</a></li>
+    <li class="w3-ripple"><a href="sub/data-projects.html">Data Projects</a></li>
+    <li class="w3-ripple"><a href="http://vsco.co/stomacake/">Photography</a></li>
+    <li class="w3-ripple"><a href="sub/about-moi.html">About Moi</a></li>
+  </ul>
+  <!--copyright footer-->
+  <footer class="w3-display-bottomright">Copyright &copy; Vivien Wanyi Zhang 2017 </footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- About Me Modal -->
+<div id="About Moi" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black">
+      <span onclick="document.getElementById('About Me').style.display='none'" class="w3-closebtn w3-xxlarge w3-hover-text-grey">x</span>
+      <h3>Contact Me</h3>
+    </div>
+    <div class="w3-container">
+      <h5>Like boys were addicted to games, I have been addicted to design since I was a kid.</h5>
+      <h5>The Chinese University of Hong Kong 2011 - 2015</h5>
+      <h5>What else?</h5>
+      <form action="mailto:someone@example.com" method="post" enctype="text/plain">
+		Name:<br>
+		<input type="text" name="name"><br>
+		E-mail:<br>
+		<input type="text" name="mail"><br>
+		Comment:<br>
+		<input type="text" name="comment" size="50"><br><br>
+		<input type="submit" value="Send">
+		<input type="reset" value="Reset">
+		</form>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
