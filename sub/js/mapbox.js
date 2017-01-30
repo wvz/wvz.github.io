@@ -25,7 +25,7 @@ map.on('load', function () {
                 "features": [{
                     "type": "Feature",
                     "properties": {
-                        "description": "<strong>Luoyang, Henan, China</strong> <br> ?-2008 <br> Born when peonies bloomed. <br> My forever home.",
+                        "description": "<strong>Luoyang, Henan, China</strong> <br> <em>?-2008, Born when peonies bloomed.</em> <br> My forever home.",
                         "icon": "star"
                     },
                     "geometry": {
