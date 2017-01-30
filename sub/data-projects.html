@@ -25,7 +25,7 @@
 		font-family: 'VT323', monospace;
 		font-size:88px;
 	}
-	p {
+	p,ol.intext {
 		font-family: 'Verdana', sans-serif;
 		font-size: 13px;
 		color:grey;
@@ -43,6 +43,7 @@
 	footer {
 		color:grey;
 		position:bottom;
+		text-align: right;
 	}
 
 	summary {
@@ -117,7 +118,7 @@
     margin-top: 3%;
 	}
 	.container{
-	    width:4500px;  
+	    width:5500px;  
 	}
 
 	.item{
@@ -148,7 +149,7 @@
   ga('create', 'UA-91100200-1', 'auto');
   ga('send', 'pageview');
   </script>
-  
+
 </head>
 
 
@@ -207,8 +208,8 @@
 				</aside>
 
 				<article class="item w3-animate-opacity">
-					<p>This is the final project of Advanced Data Science, where we were finally allowed to play whatever we want! Ever since I played Ukulele, I've always had the idea in mind that music (especially songs) can always be represented by just a few chords repeated in a given order. And that's the base of this whole project. By consulting with Professor Tian Zheng and researching music theories and statistical methods, the whole project gradually became visible in my minds. I recruited another 4 talented teammates and managed to dilever the app.</p>
-					<p>Listen to the music piece built based on a chord sequence of our app recommendation.</p>	
+					<p><q>Using chord as the base of melody mining is novel and interesting. The presentation is clear and informative.</q> -- Professor Tian Zheng</p>
+					<p>Listen to the music piece built based on a chord sequence recommendated by our app:</p>	
 					<audio controls="controls"><source src="www/melodysoup/All_genres.mp3" type="audio/mpeg"></audio>		
 				</article>
 
@@ -251,7 +252,7 @@
 				</aside>
 
 				<article class="item w3-animate-opacity">
-					<p>This is the last final project of Advanced Data Science which we are allowed to do whatever we want. Self-designed whole project flow, directed team of 5 to build an R Shiny app MelodySoup to generate chord progressions, designed logo. Conducted sequence analysis in R on chords of 990 songs using n-gram and tf-idf, visualized chord sequences by interactive chord diagrams and Sankey diagrams. Verified genre classifiablility by comparing prediction accuracy of Naïve Bayes and baseline model (improved by 107%) Introduced MelodySoup using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>			
+					<p>Stack Overflow is the largest online community for programmers to learn, share their knowledge, and advance their careers.</p><p>As future data scientists, we cannot live without Stack Overflow when programming. To help us better understand and use this community, in this project, we are going to answer the following 3 questions: <ol class="intext"> <li>What can we know from comparing R questions with Python questions?</li> <li> How can we ask questions that are more likely to receive acceptable answers? </li><li> Can we create a recommendation system to automatically generate tags for Stack Overflow questions?</li></ol> </p>			
 				</article>
 				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
 				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
@@ -260,8 +261,6 @@
 
 
 			</div>
-			<p><a style="text-decoration:none; position:relative; left:0; bottom:0;">&mdash;&ndash;&mdash;&gt; scroll right </a></p>
-
 		</div>
 
 
@@ -283,12 +282,12 @@
 
 				<aside class="item w3-animate-opacity">
 					<hr class="w3-border-grey short-line">
-					<p><i class="fa fa-user"></i> <b>Indivudual Project</b></p>
+					<p><i class="fa fa-user"></i> <b>Individual Project</b></p>
 					<br>
-					<p><i class="fa fa-tag"></i> Team Leader<br> <i class="fa fa-tag"></i> Web App Development<br><i class="fa fa-tag"></i> Music Analysis <br><i class="fa fa-tag"></i> R Shiny <br> <i class="fa fa-tag"></i> Data Visualization</p>					
+					<p><i class="fa fa-tag"></i> Lyrics Recommender <br> <i class="fa fa-tag"></i> Association Mining<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Feature Engineering <br><i class="fa fa-tag"></i> Topic Modeling<br> <i class="fa fa-tag"></i> R</p>					
 					<br>
 					<p>
-					<i class="fa fa-github"></i> <a href="https://github.com/TZstatsADS/Fall2016-proj5-grp2/">GitHub</a><br>
+					<i class="fa fa-github"></i> <a href="https://github.com/TZstatsADS/Fall2016-proj4-wvz">GitHub</a><br>
 					<i class="fa fa-link"></i> <a href="https://wanyizhang.shinyapps.io/melodysoup/">MelodySoup App</a><br>
 					<i class="fa fa-slideshare"></i> <a href="http://rpubs.com/wvz/melodysoup/">Presentation Slides</a>	
 					</p>
@@ -297,8 +296,7 @@
 				</aside>
 
 				<article class="item w3-animate-opacity">
-					<p>This up using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>	
-					<audio controls="controls"><source src="www/proj1/All_genres.mp3" type="audio/mpeg"></audio>		
+					<p>In this project we will explore the association between music features and lyrics words from a subset of songs in the million song data. </p>	
 				</article>
 
 				<img src="www/musiclyrics/app1.png" alt="App screenshot 1" class="item w3-animate-opacity" />
@@ -307,12 +305,318 @@
 				<img src="www/musiclyrics/sankey.png" alt="Sankey diagram for all songs using 4-grams" class="item w3-animate-opacity" />
 
 			</div>
-			<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
-
 		</div>
 
 
 
+
+		<br>
+
+
+
+
+		<li id="number">04/10</li><time>Ocv - Nov 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc4')">
+			<h1>Image Predictive Analytics – Labradoodle or Fried Chicken?</h1>
+		</button>
+
+		<div class="wrapper" id="desc4" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Jing Mu<br>Nicole Chencheng Jiang<br>Skanda Vishwanath<br>Ruby Jiayu Wang</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Predictive Analytics<br> <i class="fa fa-tag"></i> Image Classification<br><i class="fa fa-tag"></i> Model Enhancement<br><i class="fa fa-tag"></i> Feature Extraction<br> <i class="fa fa-tag"></i> Image Processing<br> <i class="fa fa-tag"></i> R</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/TZstatsADS/Fall2016-proj3-grp7">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="https://github.com/TZstatsADS/Fall2016-proj3-grp7/blob/master/output/Presentation.md">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="https://github.com/TZstatsADS/ADS_Teaching/blob/master/Fall2016/Tutorials/project3_summary.pdf">Performance Summary</a></p>
+					<br><br><br>
+					<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>In this project, we try to propose a feasible improvement on the currant classification engine to classify poodle dogs and fried chicken in terms of running cost (storage, memory and time) and prediction accuracy. The baseline model uses gradient boosting machine (gbm) with decision stumps on 5000 SIFT features. Our advanced model uses ensemble method (majority vote) of adaboost, random forest, knn, xgboost, and gbm on combination of 521 RGB features and original 5000 SIFT features, which enhances the accuracy rate by 21%.</p>			
+				</article>
+				<img src="www/proj3/lab-or-chicken.jpg" alt="Labradoodle or Fried Chicken" class="item w3-animate-opacity" />
+				<img src="www/proj3/training-pics.png" alt="Training images screenshot" class="item w3-animate-opacity" />
+				<img src="www/proj3/comparison.png" alt="Advanced model error rates comparison across 12 teams" class="item w3-animate-opacity" />
+				<img src="www/proj3/scoring.png" alt="Scored highest marks in class" class="item w3-animate-opacity" />
+				<img src="www/proj3/flow.png" alt="Project flow" class="item w3-animate-opacity" />
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<br>
+
+
+		<li id="number">05/10</li><time>October 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc5')">
+			<h1>R Shiny App Development for NYC Open Data – Noises Around You</h1>
+		</button>
+
+		<div class="wrapper" id="desc5" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Celia Zheyuan Chen<br>Adam Yinxiang Gao<br>Shuli Song<br>Chi Zhang</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Recommendation System<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Topic Modeling <br><i class="fa fa-tag"></i> Text Mining <br> <i class="fa fa-tag"></i> Python</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/wvz/ADA-Project">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="www/proj2/presentation.html">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="www/proj2/master.pdf">Final Report</a></p>
+					<br><br><br>
+					<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This project explores and visualizes the noise level in New York City by integrating analyses of the 311 complaints data in 2015 on NYC Open Data Portal, the geographical data of construction sites, fire stations, hospitals, and clubs in NYC. We created a Shiny App to help users navigate through our findings in 3 main tabs: Statistics, Map and Data.</p>			
+				</article>
+				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
+				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="w3-animate-opacity" src="www/stackoverflow/LDA.html" alt="Topic modeling interactive Visualization">Your browser does not support iframes.</iframe></div>
+				<img src="www/stackoverflow/recommend.png" alt="Recommendation result table" class="item w3-animate-opacity" />
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<br>
+
+
+
+		<li id="number">06/10</li><time>Sept 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc6')">
+			<h1>Analysis of American Community Surveys 2014 – Women in the Work Force</h1>
+		</button>
+
+		<div class="wrapper" id="desc6" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Kanghui Jiang<br>Erica Kilbride<br>Hayoung Kim<br>Catherine Zhao</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Recommendation System<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Topic Modeling <br><i class="fa fa-tag"></i> Text Mining <br> <i class="fa fa-tag"></i> Python</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/wvz/ADA-Project">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="www/proj2/presentation.html">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="www/proj2/master.pdf">Final Report</a></p>
+					<br><br><br>
+					<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This is the last final project of Advanced Data Science which we are allowed to do whatever we want. Self-designed whole project flow, directed team of 5 to build an R Shiny app MelodySoup to generate chord progressions, designed logo. Conducted sequence analysis in R on chords of 990 songs using n-gram and tf-idf, visualized chord sequences by interactive chord diagrams and Sankey diagrams. Verified genre classifiablility by comparing prediction accuracy of Naïve Bayes and baseline model (improved by 107%) Introduced MelodySoup using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>			
+				</article>
+				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
+				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="w3-animate-opacity" src="www/stackoverflow/LDA.html" alt="Topic modeling interactive Visualization">Your browser does not support iframes.</iframe></div>
+				<img src="www/stackoverflow/recommend.png" alt="Recommendation result table" class="item w3-animate-opacity" />
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<br>
+
+
+
+
+		<li id="number">07/10</li><time>Mar - Apr 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc7')">
+			<h1>NYU Policy Case Competition 2016</h1>
+		</button>
+
+		<div class="wrapper" id="desc7" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Xinyue Guo<br>Cori Yuyan Lin<br>Will Xingyu Wang<br>Huitao Zhou</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Recommendation System<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Topic Modeling <br><i class="fa fa-tag"></i> Text Mining <br> <i class="fa fa-tag"></i> Python</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/wvz/ADA-Project">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="www/proj2/presentation.html">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="www/proj2/master.pdf">Final Report</a></p>
+					<br><br><br>
+					<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This is the last final project of Advanced Data Science which we are allowed to do whatever we want. Self-designed whole project flow, directed team of 5 to build an R Shiny app MelodySoup to generate chord progressions, designed logo. Conducted sequence analysis in R on chords of 990 songs using n-gram and tf-idf, visualized chord sequences by interactive chord diagrams and Sankey diagrams. Verified genre classifiablility by comparing prediction accuracy of Naïve Bayes and baseline model (improved by 107%) Introduced MelodySoup using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>			
+				</article>
+				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
+				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="w3-animate-opacity" src="www/stackoverflow/LDA.html" alt="Topic modeling interactive Visualization">Your browser does not support iframes.</iframe></div>
+				<img src="www/stackoverflow/recommend.png" alt="Recommendation result table" class="item w3-animate-opacity" />
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<br>
+
+
+
+
+
+		<li id="number">08/10</li><time>Nov - Dec 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc8')">
+			<h1>Stack Overflow Q&amp;A Analysis &amp; Tag Recommendation System</h1>
+		</button>
+
+		<div class="wrapper" id="desc8" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Duanhong Gao<br>Yi Jian<br>Jingwei Li<br>Aoyuan Liao<br>Hanqing Shi<br>Jia Wang<br>Yutong Yang</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Recommendation System<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Topic Modeling <br><i class="fa fa-tag"></i> Text Mining <br> <i class="fa fa-tag"></i> Python</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/wvz/ADA-Project">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="www/proj2/presentation.html">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="www/proj2/master.pdf">Final Report</a></p>
+					<br><br><br>
+					<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This is the last final project of Advanced Data Science which we are allowed to do whatever we want. Self-designed whole project flow, directed team of 5 to build an R Shiny app MelodySoup to generate chord progressions, designed logo. Conducted sequence analysis in R on chords of 990 songs using n-gram and tf-idf, visualized chord sequences by interactive chord diagrams and Sankey diagrams. Verified genre classifiablility by comparing prediction accuracy of Naïve Bayes and baseline model (improved by 107%) Introduced MelodySoup using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>			
+				</article>
+				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
+				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="w3-animate-opacity" src="www/stackoverflow/LDA.html" alt="Topic modeling interactive Visualization">Your browser does not support iframes.</iframe></div>
+				<img src="www/stackoverflow/recommend.png" alt="Recommendation result table" class="item w3-animate-opacity" />
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<br>
+
+
+
+		<li id="number">09/10</li><time>Nov - Dec 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc9')">
+			<h1>Stack Overflow Q&amp;A Analysis &amp; Tag Recommendation System</h1>
+		</button>
+
+		<div class="wrapper" id="desc9" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Duanhong Gao<br>Yi Jian<br>Jingwei Li<br>Aoyuan Liao<br>Hanqing Shi<br>Jia Wang<br>Yutong Yang</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Recommendation System<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Topic Modeling <br><i class="fa fa-tag"></i> Text Mining <br> <i class="fa fa-tag"></i> Python</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/wvz/ADA-Project">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="www/proj2/presentation.html">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="www/proj2/master.pdf">Final Report</a></p>
+					<br><br><br>
+					<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This is the last final project of Advanced Data Science which we are allowed to do whatever we want. Self-designed whole project flow, directed team of 5 to build an R Shiny app MelodySoup to generate chord progressions, designed logo. Conducted sequence analysis in R on chords of 990 songs using n-gram and tf-idf, visualized chord sequences by interactive chord diagrams and Sankey diagrams. Verified genre classifiablility by comparing prediction accuracy of Naïve Bayes and baseline model (improved by 107%) Introduced MelodySoup using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>			
+				</article>
+				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
+				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="w3-animate-opacity" src="www/stackoverflow/LDA.html" alt="Topic modeling interactive Visualization">Your browser does not support iframes.</iframe></div>
+				<img src="www/stackoverflow/recommend.png" alt="Recommendation result table" class="item w3-animate-opacity" />
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<br>
+
+
+
+
+		<li id="number">10/10</li><time>Nov - Dec 2016</time>
+
+		<button class="project w3-hover-opacity w3-animate-left" onclick="showDesc('desc10')">
+			<h1>Stack Overflow Q&amp;A Analysis &amp; Tag Recommendation System</h1>
+		</button>
+
+		<div class="wrapper" id="desc10" style="display:none;">
+			<div class="container">
+
+				<aside class="item w3-animate-opacity">
+					<hr class="w3-border-grey short-line">
+					<p><i class="fa fa-group"></i> <b>TEAM</b><br>Duanhong Gao<br>Yi Jian<br>Jingwei Li<br>Aoyuan Liao<br>Hanqing Shi<br>Jia Wang<br>Yutong Yang</p>
+					<br>
+					<p><i class="fa fa-tag"></i> Recommendation System<br> <i class="fa fa-tag"></i> Predictive Analytics<br><i class="fa fa-tag"></i> Topic Modeling <br><i class="fa fa-tag"></i> Text Mining <br> <i class="fa fa-tag"></i> Python</p>
+					<br>
+					<p>
+					<i class="fa fa-github"></i> <a href="https://github.com/wvz/ADA-Project">GitHub</a><br>
+					<i class="fa fa-file-text"></i> <a href="www/proj2/presentation.html">Presentation Markdown</a><br>
+					<i class="fa fa-file-pdf-o"></i> <a href="www/proj2/master.pdf">Final Report</a></p>
+					<br><br><br>
+					<p><a style="text-decoration:none;">&ndash;&ndash;&ndash;&gt; scroll right </a></p>
+				</aside>
+
+				<article class="item w3-animate-opacity">
+					<p>This is the last final project of Advanced Data Science which we are allowed to do whatever we want. Self-designed whole project flow, directed team of 5 to build an R Shiny app MelodySoup to generate chord progressions, designed logo. Conducted sequence analysis in R on chords of 990 songs using n-gram and tf-idf, visualized chord sequences by interactive chord diagrams and Sankey diagrams. Verified genre classifiablility by comparing prediction accuracy of Naïve Bayes and baseline model (improved by 107%) Introduced MelodySoup using ioSlides to class of 62 students, 2 professors, and 4 teaching assistants, scored highest marks in class.</p>			
+				</article>
+				<img src="www/stackoverflow/intro.png" alt="Project introduction screenshot" class="item w3-animate-opacity" />
+				<img src="www/stackoverflow/data-source.png" alt="Data source screenshot" class="item w3-animate-opacity" />
+				<div id="wrap" class="item"><iframe id="frame" class="w3-animate-opacity" src="www/stackoverflow/LDA.html" alt="Topic modeling interactive Visualization">Your browser does not support iframes.</iframe></div>
+				<img src="www/stackoverflow/recommend.png" alt="Recommendation result table" class="item w3-animate-opacity" />
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<br>
 
 	</div>
 
