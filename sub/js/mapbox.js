@@ -30,7 +30,7 @@ map.on('load', function () {
                     },
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [112.4540, 34.6197]
+                        "coordinates": [-247.54600, 34.6197]
                     }
                 }, 
 
