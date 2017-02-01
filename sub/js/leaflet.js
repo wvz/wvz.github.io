@@ -45,7 +45,7 @@ var someFeatures = [{
 
     "type": "Feature",
     "properties": {
-        "popupContent": "<strong>Chapel Hill, NC</strong> <br> <em>2014, exchange student at UNC-Chapel Hill<br> Kenan-Flager Business School </em><br> Go Tar Heels!",
+        "popupContent": "<strong>Chapel Hill, NC</strong> <br> <em>2014, exchange student at UNC-Chapel Hill<br> Kenan-Flagler Business School </em><br> Go Tar Heels!",
     },
     "geometry": {
         "type": "Point",
