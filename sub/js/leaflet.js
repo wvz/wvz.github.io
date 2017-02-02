@@ -15,7 +15,7 @@ function onEachFeature(feature, layer) {
 var someFeatures = [{
     "type": "Feature",
     "properties": {
-        "popupContent": "<strong>Luoyang, Henan, China</strong> <br> <em>Born when peonies bloomed.</em> <br> My forever home.",
+        "popupContent": "<strong>Luoyang, Henan, China</strong> <br> <em>Born when peonies bloomed.</em> <br> My home.",
     },
     "geometry": {
         "type": "Point",
