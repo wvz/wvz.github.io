@@ -16,27 +16,33 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!--internal CSS-->
 	<style>
-	body,h1,h4,ul,footer {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 100;
-}
-	body,p {
-    font-family: 'Dosis', sans-serif;
-    font-weight: 100;
-}	
-	body, html {height: 100%}
-	footer {background: none;color:white;}
-	.bgimg {
-      background-image: url('www/soppysac.jpg');
-      min-height: 100%;
+	html, body {
+      margin: 0;
+      padding: 0;
+      overflow: auto; /* Allows overflow content to be visible and scrollable */
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .background-image {
+      width: 100vw;
+      height: auto;
+      background-size: cover; 
       background-position: center;
-      background-size: cover;
-	}
-  li a:hover:not(.active) {
-      color:rgb(255,200,200);
-      background:none;
-  }
-  p span.displaynone { display:none; }
+      background-attachment: scroll, local;
+    }
+
+    /* Objects that move */
+    .movable-object {
+      position: absolute;
+      background-color: transparent;
+      pointer-events: auto;
+    }
 
 	</style>
 
@@ -44,13 +50,216 @@
 
 
 
+
+
+
+
+
+
 <body>
+  <!-- Background Image -->
+  <img src="www/yellow.jpg" class="background-image" alt="Background">
+
+  <!-- Moving Objects Container -->
+  <div id="objectsContainer"></div>
+
+  <script>
+    const container = document.getElementById('objectsContainer');
+    const objectCount = 4;
+    const gravity = 0.5;
+    const bounce = 0.7;
+    const friction = 0.99;
+    const growthRate = 1;
+    const maxSizeMultiplier = 6; // Objects will grow to 3 times their original size
+
+    const objects = [];
+    const velocities = [];
+    const sizes = [];
+    const originalSizes = [];
+
+    const startX = window.innerWidth * 2/3;
+    const startY = window.innerHeight * 2/3;
+
+    // Create objects
+    for (let i = 0; i < objectCount; i++) {
+      const obj = document.createElement('a');
+      obj.className = 'movable-object';
+      if (i === 0) {
+        obj.href = 'data-projects.html';
+        obj.src = 'www/animated_yellow_web.gif';
+      } else if (i === 2) {
+        obj.src = 'www/object_car.png';
+        obj.classList.add('car-object');
+        obj.href = 'about-moi.html';
+      } else {
+        obj.src = 'www/animated_yellow_web.gif';
+        obj.href = '#';
+      }
+      const img = document.createElement('img');
+      img.src = obj.src;
+      obj.appendChild(img);
+      
+      if (i !== 2) { // For non-car objects
+        obj.style.left = `${startX}px`;
+        obj.style.top = `${startY}px`;
+        velocities.push({ 
+          x: Math.random() * 10 - 5, 
+          y: -Math.random() * 15 - 10 // Initial upward velocity
+        });
+        const initialSize = 20; // Small initial size
+        sizes.push(initialSize);
+        originalSizes.push(initialSize);
+        img.style.width = `${initialSize}px`;
+      } else { // For car object
+        obj.style.top = `${Math.random() * (window.innerHeight / 2)}px`;
+        obj.style.left = `${Math.random() * window.innerWidth}px`;
+        velocities.push({ x: 0, y: 0 });
+        sizes.push(window.innerWidth / 2);
+        originalSizes.push(window.innerWidth / 2);
+      }
+      
+      container.appendChild(obj);
+      objects.push(obj);
+    }
+
+    function adjustCarSize() {
+      const carObject = objects[2].querySelector('img');
+      const halfScreenWidth = window.innerWidth / 2;
+      carObject.style.width = `${halfScreenWidth}px`;
+      carObject.style.height = 'auto';
+    }
+
+    adjustCarSize();
+    window.addEventListener('resize', adjustCarSize);
+
+    function createTrail(obj) {
+      const trail = obj.cloneNode(true);
+      trail.style.opacity = '0.3';
+      trail.style.position = 'absolute';
+      trail.style.pointerEvents = 'none';
+      trail.removeAttribute('href');
+      container.appendChild(trail);
+    }
+
+    function moveObjects() {
+      let allStopped = true;
+      objects.forEach((obj, index) => {
+        if (index === 2) return; // Skip the car object
+
+        const img = obj.querySelector('img');
+        const rect = obj.getBoundingClientRect();
+        
+        createTrail(obj);
+        
+        // Apply gravity
+        velocities[index].y += gravity;
+        
+        // Update position
+        let newX = rect.left + velocities[index].x;
+        let newY = rect.top + velocities[index].y;
+
+        // Check if object hit the ground
+        if (newY + rect.height >= window.innerHeight) {
+          newY = window.innerHeight - rect.height;
+          velocities[index].y *= -bounce;
+          velocities[index].x *= friction;
+        }
+
+        // Bounce off sides
+        if (newX <= 0 || newX + rect.width >= window.innerWidth) {
+          velocities[index].x *= -bounce;
+          newX = newX <= 0 ? 0 : window.innerWidth - rect.width;
+        }
+
+        // Update object position
+        obj.style.left = newX + 'px';
+        obj.style.top = newY + 'px';
+
+        // Increase size up to twice the original size
+        if (sizes[index] < originalSizes[index] * maxSizeMultiplier) {
+          sizes[index] += growthRate;
+          img.style.width = `${sizes[index]}px`;
+          img.style.height = 'auto';
+        }
+
+        // Check if object is still moving
+        if (Math.abs(velocities[index].x) > 0.1 || Math.abs(velocities[index].y) > 0.1) {
+          allStopped = false;
+        }
+      });
+
+      if (!allStopped) {
+        requestAnimationFrame(moveObjects);
+      }
+    }
+
+    moveObjects();
+
+    // Random movement for the car object
+    const carObject = objects[2];
+    const originalCarPosition = {
+      left: parseInt(carObject.style.right) + window.innerWidth - carObject.offsetWidth,
+      top: parseInt(carObject.style.bottom) + window.innerHeight - carObject.offsetHeight
+    };
+
+    setInterval(() => {
+      const rect = carObject.getBoundingClientRect();
+      let newX = originalCarPosition.left + (Math.random() * 40 - 20);
+      let newY = originalCarPosition.top + (Math.random() * 40 - 20);
+
+      // Keep within bounds
+      newX = Math.max(0, Math.min(newX, window.innerWidth - rect.width));
+      newY = Math.max(0, Math.min(newY, window.innerHeight - rect.height));
+
+      carObject.style.left = newX + 'px';
+      carObject.style.top = newY + 'px';
+    }, 1000);
+  </script>
+
+  <style>
+    body {
+      cursor: url('www/arrow2.png'), auto;
+    }
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: auto;
+      object-fit: cover;
+    }
+    #objectsContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .movable-object {
+      position: absolute;
+      pointer-events: auto;
+      text-decoration: none;
+    }
+    .movable-object img {
+      width: 0px;  /* Start with 0 size */
+      height: auto;
+      transition: width 0.1s ease-in-out;
+    }
+    .car-object img {
+      width: 50vw;  /* Half of the screen width */
+      height: auto;
+    }
+  </style>
+
 <!--background music-->
 <audio autoplay="autoplay" loop="loop">
   <source src="www/Morning Talk_Supersymmetry.mp3" type="audio/mpeg">
 </audio>
 
-<!--Vivien Wanyi Zhang-->
+
+
+<!--about me-->
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <!--div class="w3-display-topleft w3-padding-large w3-large">
     VWZ
@@ -66,7 +275,7 @@
     <p class="w3-large w3-center">
 		 <b>&exist; selected creations &isin; VWZ</b><br> 
      <em>w.zhang@<span class="displaynone">null</span>columbia.edu<br>
-		 New York, NY 10025, USA<br></em>
+		 San Francisco, CA 94107, USA<br></em>
 	   <a href="https://www.instagram.com/stomacake_/"><i class="fa fa-instagram"></i></a>
 	   <a href="http://whatuhoh.tumblr.com/"><i class="fa fa-tumblr"></i></a> 
 	   <a href="https://soundcloud.com/bunnythegreat"><i class="fa fa-soundcloud"></i></a> 
@@ -87,42 +296,6 @@
   <footer class="w3-display-bottomright">Copyright &copy; Vivien Wanyi Zhang 2017 </footer>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- About Me Modal -->
-<div id="About Moi" class="w3-modal">
-  <div class="w3-modal-content w3-animate-zoom">
-    <div class="w3-container w3-black">
-      <span onclick="document.getElementById('About Me').style.display='none'" class="w3-closebtn w3-xxlarge w3-hover-text-grey">x</span>
-      <h3>Contact Me</h3>
-    </div>
-    <div class="w3-container">
-      <h5>Like boys were addicted to games, I have been addicted to design since I was a kid.</h5>
-      <h5>The Chinese University of Hong Kong 2011 - 2015</h5>
-      <h5>What else?</h5>
-      <form action="mailto:someone@example.com" method="post" enctype="text/plain">
-		Name:<br>
-		<input type="text" name="name"><br>
-		E-mail:<br>
-		<input type="text" name="mail"><br>
-		Comment:<br>
-		<input type="text" name="comment" size="50"><br><br>
-		<input type="submit" value="Send">
-		<input type="reset" value="Reset">
-		</form>
-    </div>
-  </div>
-</div>
 
 
 </body>
