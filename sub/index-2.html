@@ -99,7 +99,13 @@
       img.src = obj.src;
       obj.appendChild(img);
       
-      if (i !== 2) { // For non-car objects
+      if (i === 2) { // For car object
+        obj.style.top = `${Math.random() * (window.innerHeight / 2)}px`;
+        obj.style.left = `${Math.random() * window.innerWidth}px`;
+        velocities.push({ x: 0, y: 0 });
+        sizes.push(window.innerWidth / 2);
+        originalSizes.push(window.innerWidth / 2);
+      } else { // For non-car objects
         obj.style.left = `${startX}px`;
         obj.style.top = `${startY}px`;
         velocities.push({ 
@@ -110,12 +116,6 @@
         sizes.push(initialSize);
         originalSizes.push(initialSize);
         img.style.width = `${initialSize}px`;
-      } else { // For car object
-        obj.style.top = `${Math.random() * (window.innerHeight / 2)}px`;
-        obj.style.left = `${Math.random() * window.innerWidth}px`;
-        velocities.push({ x: 0, y: 0 });
-        sizes.push(window.innerWidth / 2);
-        originalSizes.push(window.innerWidth / 2);
       }
       
       container.appendChild(obj);
@@ -198,22 +198,33 @@
     // Random movement for the car object
     const carObject = objects[2];
     const originalCarPosition = {
-      left: parseInt(carObject.style.right) + window.innerWidth - carObject.offsetWidth,
-      top: parseInt(carObject.style.bottom) + window.innerHeight - carObject.offsetHeight
+      left: parseInt(carObject.style.left),
+      top: parseInt(carObject.style.top)
     };
 
-    setInterval(() => {
-      const rect = carObject.getBoundingClientRect();
-      let newX = originalCarPosition.left + (Math.random() * 40 - 20);
-      let newY = originalCarPosition.top + (Math.random() * 40 - 20);
+    let lastCarMoveTime = 0;
+    const carMoveInterval = 500; // Move every 500ms (0.5 seconds)
 
-      // Keep within bounds
-      newX = Math.max(0, Math.min(newX, window.innerWidth - rect.width));
-      newY = Math.max(0, Math.min(newY, window.innerHeight - rect.height));
+    function moveCarRandomly(timestamp) {
+      if (timestamp - lastCarMoveTime > carMoveInterval) {
+        const rect = carObject.getBoundingClientRect();
+        let newX = parseFloat(carObject.style.left) + (Math.random() * 10 - 5); // Reduced range
+        let newY = parseFloat(carObject.style.top) + (Math.random() * 10 - 5); // Reduced range
 
-      carObject.style.left = newX + 'px';
-      carObject.style.top = newY + 'px';
-    }, 1000);
+        // Keep within bounds
+        newX = Math.max(0, Math.min(newX, window.innerWidth - rect.width));
+        newY = Math.max(0, Math.min(newY, window.innerHeight - rect.height));
+
+        carObject.style.left = newX + 'px';
+        carObject.style.top = newY + 'px';
+
+        lastCarMoveTime = timestamp;
+      }
+
+      requestAnimationFrame(moveCarRandomly);
+    }
+
+    moveCarRandomly(performance.now());
   </script>
 
   <style>
