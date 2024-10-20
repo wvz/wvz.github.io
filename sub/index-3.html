@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen SLS with Vertical Line Reveal Effect</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('www/Screen_SLS.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .new-image {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('www/Screen_SLS_Cool.gif');
+            background-size: cover;
+            background-position: center;
+            clip-path: inset(0 0 0 100%);
+            transition: clip-path 2s ease-in-out;
+        }
+        .reveal .new-image {
+            clip-path: inset(0 0 0 0);
+        }
+        .trigger {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="new-image"></div>
+    <button class="trigger">Reveal</button>
+
+    <script>
+        const trigger = document.querySelector('.trigger');
+        const body = document.body;
+
+        trigger.addEventListener('click', () => {
+            body.classList.toggle('reveal');
+        });
+    </script>
+</body>
+</html>

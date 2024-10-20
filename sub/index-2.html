@@ -31,7 +31,7 @@
 
     .background-image {
       width: 100vw;
-      height: auto;
+      height: 100vh;
       background-size: cover; 
       background-position: center;
       background-attachment: scroll, local;
@@ -58,7 +58,7 @@
 
 <body>
   <!-- Background Image -->
-  <img src="www/yellow.jpg" class="background-image" alt="Background">
+  <img src="www/Screen_SLS_cool.jpg" class="background-image" alt="Background">
 
   <!-- Moving Objects Container -->
   <div id="objectsContainer"></div>
@@ -69,16 +69,16 @@
     const gravity = 0.5;
     const bounce = 0.7;
     const friction = 0.99;
-    const growthRate = 1;
-    const maxSizeMultiplier = 6; // Objects will grow to 3 times their original size
+    const growthRate = 0.5;
+    const maxSizeMultiplier = 12; // Objects will grow to 3 times their original size
 
     const objects = [];
     const velocities = [];
     const sizes = [];
     const originalSizes = [];
 
-    const startX = window.innerWidth * 2/3;
-    const startY = window.innerHeight * 2/3;
+    const startX = window.innerWidth * 4/5;
+    const startY = window.innerHeight * 1/2;
 
     // Create objects
     for (let i = 0; i < objectCount; i++) {
@@ -86,28 +86,24 @@
       obj.className = 'movable-object';
       if (i === 0) {
         obj.href = 'data-projects.html';
-        obj.src = 'www/animated_yellow_web.gif';
+        obj.src = 'www/sample_card.jpg';
       } else if (i === 2) {
         obj.src = 'www/object_car.png';
         obj.classList.add('car-object');
         obj.href = 'about-moi.html';
       } else {
-        obj.src = 'www/animated_yellow_web.gif';
+        obj.src = 'www/File_000.png';
         obj.href = '#';
       }
       const img = document.createElement('img');
       img.src = obj.src;
       obj.appendChild(img);
       
-      if (i === 2) { // For car object
-        obj.style.top = `${Math.random() * (window.innerHeight / 2)}px`;
-        obj.style.left = `${Math.random() * window.innerWidth}px`;
-        velocities.push({ x: 0, y: 0 });
-        sizes.push(window.innerWidth / 2);
-        originalSizes.push(window.innerWidth / 2);
-      } else { // For non-car objects
+      if (i !== 2) { // For non-car objects
         obj.style.left = `${startX}px`;
         obj.style.top = `${startY}px`;
+        // Limit initial velocities
+        const maxInitialSpeed = 3;
         velocities.push({ 
           x: Math.random() * 10 - 5, 
           y: -Math.random() * 15 - 10 // Initial upward velocity
@@ -116,6 +112,12 @@
         sizes.push(initialSize);
         originalSizes.push(initialSize);
         img.style.width = `${initialSize}px`;
+      } else { // For car object
+        obj.style.top = `${Math.random() * (window.innerHeight / 2)}px`;
+        obj.style.left = `${Math.random() * window.innerWidth}px`;
+        velocities.push({ x: 0, y: 0 });
+        sizes.push(window.innerWidth / 2);
+        originalSizes.push(window.innerWidth / 2);
       }
       
       container.appendChild(obj);
