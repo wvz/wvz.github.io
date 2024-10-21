@@ -44,6 +44,19 @@
       pointer-events: auto;
     }
 
+    .spinning {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(180deg);
+      }
+    }
+
 	</style>
 
 </head>
@@ -58,19 +71,25 @@
 
 <body>
   <!-- Background Image -->
-  <img src="www/Screen_SLS_Cool.jpg" class="background-image" alt="Background">
+  <img src="www/Screen_SLS_Cool.gif" class="background-image" alt="Background">
 
   <!-- Moving Objects Container -->
   <div id="objectsContainer"></div>
 
+  <!-- Plant Image -->
+  <div id="plantContainer">
+    <img id="plantImage" src="www/plant.png" alt="Plant" />
+    <div id="clickCount">Clicks: 0</div>
+  </div>
+
   <script>
     const container = document.getElementById('objectsContainer');
-    const objectCount = 4;
+    const objectCount = 3; // Adjusted to reflect the new number of objects
     const gravity = 0.5;
     const bounce = 0.7;
     const friction = 0.99;
-    const growthRate = 0.5;
-    const maxSizeMultiplier = 12; // Objects will grow to 3 times their original size
+    const growthRate = 0.9;
+    const maxSizeMultiplier = 10; // Objects will grow to 10 times their original size
 
     const objects = [];
     const velocities = [];
@@ -84,55 +103,61 @@
     for (let i = 0; i < objectCount; i++) {
       const obj = document.createElement('a');
       obj.className = 'movable-object';
+      
+      // Set href and src for each object
       if (i === 0) {
         obj.href = 'data-projects.html';
         obj.src = 'www/sample_card.jpg';
-      } else if (i === 2) {
-        obj.src = 'www/object_car.png';
-        obj.classList.add('car-object');
-        obj.href = 'about-moi.html';
       } else {
         obj.src = 'www/File_000.png';
         obj.href = '#';
       }
+      
       const img = document.createElement('img');
       img.src = obj.src;
       obj.appendChild(img);
       
-      if (i !== 2) { // For non-car objects
-        obj.style.left = `${startX}px`;
-        obj.style.top = `${startY}px`;
-        // Limit initial velocities
-        const maxInitialSpeed = 3;
-        velocities.push({ 
-          x: Math.random() * 10 - 5, 
-          y: -Math.random() * 15 - 10 // Initial upward velocity
-        });
-        const initialSize = 20; // Small initial size
-        sizes.push(initialSize);
-        originalSizes.push(initialSize);
-        img.style.width = `${initialSize}px`;
-      } else { // For car object
-        obj.style.top = `${Math.random() * (window.innerHeight / 2)}px`;
-        obj.style.left = `${Math.random() * window.innerWidth}px`;
-        velocities.push({ x: 0, y: 0 });
-        sizes.push(window.innerWidth / 2);
-        originalSizes.push(window.innerWidth / 2);
-      }
+      // Set initial position and velocity for objects
+      obj.style.left = `${startX}px`;
+      obj.style.top = `${startY}px`;
+      velocities.push({ 
+        x: -Math.random() * 5 - 2, // Negative x for leftward movement
+        y: -Math.random() * 15 - 10  // Negative y for upward movement
+      });
+      const initialSize = 20; // Small initial size
+      sizes.push(initialSize);
+      originalSizes.push(initialSize);
+      img.style.width = `${initialSize}px`;
       
+      // Add hover event listeners
+      obj.addEventListener('mouseenter', () => {
+        if (velocities[i].y === 0 && velocities[i].x === 0) { // Check if the object is fully stopped
+          obj.style.animation = 'spin 1s linear infinite';
+        }
+      });
+
+      obj.addEventListener('mouseleave', () => {
+        if (velocities[i].y === 0 && velocities[i].x === 0) { // Check if the object is fully stopped
+          // Gradually reduce spinning speed
+          let spinDuration = 1; // Initial spin duration in seconds
+          const reduceSpin = () => {
+            spinDuration += 0.1; // Increase duration to slow down
+            obj.style.animationDuration = `${spinDuration}s`;
+            if (spinDuration < 5) { // Stop increasing after a certain point
+              requestAnimationFrame(reduceSpin);
+            } else {
+              obj.style.animation = ''; // Remove animation
+            }
+          };
+          reduceSpin();
+        }
+      });
+
       container.appendChild(obj);
       objects.push(obj);
     }
 
-    function adjustCarSize() {
-      const carObject = objects[2].querySelector('img');
-      const halfScreenWidth = window.innerWidth / 2;
-      carObject.style.width = `${halfScreenWidth}px`;
-      carObject.style.height = 'auto';
-    }
 
-    adjustCarSize();
-    window.addEventListener('resize', adjustCarSize);
 
     function createTrail(obj) {
       const trail = obj.cloneNode(true);
@@ -146,8 +171,6 @@
     function moveObjects() {
       let allStopped = true;
       objects.forEach((obj, index) => {
-        if (index === 2) return; // Skip the car object
-
         const img = obj.querySelector('img');
         const rect = obj.getBoundingClientRect();
         
@@ -173,9 +196,17 @@
           newX = newX <= 0 ? 0 : window.innerWidth - rect.width;
         }
 
+        // Set velocities to zero if they are very low
+        if (Math.abs(velocities[index].x) <= 0.1) {
+          velocities[index].x = 0;
+        }
+        if (Math.abs(velocities[index].y) <= 0.1) {
+          velocities[index].y = 0;
+        }
+
         // Update object position
-        obj.style.left = newX + 'px';
-        obj.style.top = newY + 'px';
+        obj.style.left = `${newX}px`;
+        obj.style.top = `${newY}px`;
 
         // Increase size up to twice the original size
         if (sizes[index] < originalSizes[index] * maxSizeMultiplier) {
@@ -196,37 +227,6 @@
     }
 
     moveObjects();
-
-    // Random movement for the car object
-    const carObject = objects[2];
-    const originalCarPosition = {
-      left: parseInt(carObject.style.left),
-      top: parseInt(carObject.style.top)
-    };
-
-    let lastCarMoveTime = 0;
-    const carMoveInterval = 500; // Move every 500ms (0.5 seconds)
-
-    function moveCarRandomly(timestamp) {
-      if (timestamp - lastCarMoveTime > carMoveInterval) {
-        const rect = carObject.getBoundingClientRect();
-        let newX = parseFloat(carObject.style.left) + (Math.random() * 10 - 5); // Reduced range
-        let newY = parseFloat(carObject.style.top) + (Math.random() * 10 - 5); // Reduced range
-
-        // Keep within bounds
-        newX = Math.max(0, Math.min(newX, window.innerWidth - rect.width));
-        newY = Math.max(0, Math.min(newY, window.innerHeight - rect.height));
-
-        carObject.style.left = newX + 'px';
-        carObject.style.top = newY + 'px';
-
-        lastCarMoveTime = timestamp;
-      }
-
-      requestAnimationFrame(moveCarRandomly);
-    }
-
-    moveCarRandomly(performance.now());
   </script>
 
   <style>
@@ -306,10 +306,50 @@
     <li class="w3-ripple"><a href="sub/about-moi.html">About Moi</a></li>
   </ul>
   <!--copyright footer-->
-  <footer class="w3-display-bottomright">Copyright &copy; Vivien Wanyi Zhang 2017 </footer>
+  <footer class="w3-display-bottomright">Copyright &copy; Vivien Wanyi Zhang 2024 </footer>
 </div>
 
+<style>
+  #plantContainer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    text-align: center;
+  }
 
+  #plantImage {
+    width: 100px; /* Adjust size as needed */
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  #plantImage:hover {
+    box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.7); /* Glow effect */
+  }
+
+  #clickCount {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+</style>
+
+<script>
+  // Retrieve the click count from localStorage or initialize it to 0
+  let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+
+  const plantImage = document.getElementById('plantImage');
+  const clickCountDisplay = document.getElementById('clickCount');
+
+  // Display the initial click count
+  clickCountDisplay.textContent = `Clicks: ${clickCount}`;
+
+  plantImage.addEventListener('click', () => {
+    clickCount++;
+    clickCountDisplay.textContent = `Clicks: ${clickCount}`;
+    // Store the updated click count in localStorage
+    localStorage.setItem('clickCount', clickCount);
+  });
+</script>
 
 </body>
 </html>
